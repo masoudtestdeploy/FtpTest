@@ -22,11 +22,11 @@ async def start_command(bot, message):
     
 @bot.on_message((filters.document | filters.video | filters.photo) & filters.private)
 async def VidWatermarkAdder(bot, cmd):
-    dl_loc = Config.DOWN_PATH + "/WatermarkAdder/" + str(cmd.from_user.id) + "/"
-      if not os.path.isdir(dl_loc):
-          os.makedirs(dl_loc)
+    dl_loc = "./dl/" + str(cmd.from_user.id) + "/"
+    if not os.path.isdir(dl_loc):
+    	os.makedirs(dl_loc)
     the_media = await bot.download_media(
         message=cmd,
         file_name=dl_loc
-		)
-
+    )
+    print(the_media)
